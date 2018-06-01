@@ -4,8 +4,8 @@ class Author(models.Model):
     name = models.CharField(max_length=100, unique=True)
     email = models.EmailField(unique=True)
     active = models.BooleanField(default=False)
-    created_on = models.DateTimeField()
-    last_logged_in = models.DateTimeField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    last_logged_in = models.DateTimeField(auto_now=True)
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
