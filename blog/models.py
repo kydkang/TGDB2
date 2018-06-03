@@ -50,6 +50,6 @@ class Post(models.Model):
         self.slug = slugify(self.title)
         super(Post, self).save(*args, **kwargs)
     def get_absolute_url(self):
-      return reverse('post_detail', args=[self.pk])
+      return reverse('post_detail', args=[self.id, self.slug])
 
 
