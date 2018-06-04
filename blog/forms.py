@@ -1,6 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from .models import Author, Tag, Category, Post
+from django.template.defaultfilters import slugify
 
 
 class AuthorForm(forms.ModelForm):
