@@ -1,6 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from .models import Author, Tag, Category, Post
+from .models import Author, Tag, Category, Post, Feedback  
 from django.template.defaultfilters import slugify
 
 
@@ -72,3 +72,9 @@ class PostForm(forms.ModelForm):
         if title:
             cleaned_data['slug'] = slugify(title)  #slugify() create lowercase
         return cleaned_data
+
+class FeedbackForm(forms.ModelForm):
+    class Meta:
+        model = Feedback
+        fields = '__all__'
+        
