@@ -4,6 +4,7 @@ from django.contrib import messages
 from blog.models import Post, Author, Category, Tag
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
+from .forms import CustomUserCreationForm
 
 def post_add(request):
 
@@ -50,3 +51,14 @@ def login(request, **kwargs):
         return redirect('/cadmin/')
     else:
         return auth_views.login(request, **kwargs)
+
+def register(request):
+    if request.method == 'POST':
+        f = CustomUserCreationForm(request.POST)
+        if f.is_valid():
+            f.save()
+            messages.success(request, 'Account created successfully')
+            return redirect('register')
+    else:
+        f = CustomUserCreationForm()
+    return render(request, 'cadmin/register.html', {'form': f})
