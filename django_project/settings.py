@@ -143,3 +143,5 @@ ADMINS = [
     ('Admin', 'introtodjango@gmail.com'),
 ]
 MANAGERS = ADMINS
+
+LOGIN_URL = 'login' 
