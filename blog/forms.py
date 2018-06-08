@@ -20,6 +20,8 @@ class AuthorForm(forms.ModelForm):
         return self.cleaned_data['email'].lower()
 
 class TagForm(forms.ModelForm):
+    author = forms.ModelChoiceField(queryset=Author.objects.all(), 
+               required=False)
 
     class Meta:
         model = Tag
@@ -38,6 +40,8 @@ class TagForm(forms.ModelForm):
 
 
 class CategoryForm(forms.ModelForm):
+    author = forms.ModelChoiceField(queryset=Author.objects.all(), 
+               required=False)
 
     class Meta:
         model = Category
@@ -54,6 +58,8 @@ class CategoryForm(forms.ModelForm):
 
 
 class PostForm(forms.ModelForm):
+    author = forms.ModelChoiceField(queryset=Author.objects.all(), 
+                                    required=False)
 
     class Meta:
         model = Post
